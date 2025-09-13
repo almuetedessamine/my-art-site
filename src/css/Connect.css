@@ -1,0 +1,29 @@
+.Connect-tab {
+    padding: 1.5rem;
+    background-color: #fdfcfa;
+    border-radius: 12px;
+}
+
+.Connect-tab h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #3f2e20;
+}
+
+.Connect-tab table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.Connect-tab th,
+.Connect-tab td {
+    border: 1px solid #dcd7d0;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.Connect-tab th {
+    background-color: #f5ede3;
+    color: #4a3f35;
+}

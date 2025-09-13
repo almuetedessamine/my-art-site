@@ -1,0 +1,30 @@
+.Works-tab {
+    padding: 1.5rem;
+    background-color: #fafcff;
+    border-radius: 12px;
+}
+
+.Works-tab h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #2f3a4a;
+}
+
+.Works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.art-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.art-card:hover {
+    transform: scale(1.03);
+}

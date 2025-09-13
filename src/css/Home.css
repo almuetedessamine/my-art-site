@@ -1,0 +1,49 @@
+/* Home page styling */
+.home-tab {
+    text-align: center;
+    background: #FFEEC2;
+    padding: 2rem;
+    border-top: none;
+}
+
+.home-tab p {
+    color: #444;
+    margin-bottom: 1.5rem;
+}
+
+/* Icon buttons wrapper */
+.icon-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Each icon button */
+.icon-button {
+    display: flex;
+    flex-direction: column; /* icon on top, text below */
+    align-items: center;
+    cursor: pointer;
+}
+
+/* The actual icon */
+.button-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 8px;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.button-icon:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+/* Text under icon (not clickable, just label) */
+.icon-button span {
+    margin-top: 4px;
+    font-size: 14px;
+    pointer-events: none;
+}

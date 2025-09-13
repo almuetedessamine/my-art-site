@@ -1,0 +1,63 @@
+/* Browser container */
+.browser {
+    max-width: 900px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Tab bar */
+.tab-bar {
+    display: flex;
+    border-bottom: 2px solid #F68C02; /* orange line under tabs */
+    border-radius: 8px 8px 0 0;
+}
+
+/* Individual tabs */
+.tab {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    margin-right: 0.25rem;
+    background: #e6e9ef;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    font-size: 0.9rem;
+    position: relative;
+    transition: background 0.2s ease;
+}
+
+.tab:hover {
+    background: #d9dee8;
+}
+
+.tab.active {
+    background: #fff;
+    border: 2px solid #F68C02;
+    border-bottom: none;
+    z-index: 1;
+}
+
+/* Close button */
+.close-btn {
+    margin-left: 8px;
+    font-size: 0.8rem;
+    color: #a33;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+/* Content area */
+.tab-content {
+    background: #fff;
+    border: 2px solid #F68C02;
+    border-top: none; /* connects content to tab */
+}
