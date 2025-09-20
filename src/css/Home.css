@@ -1,7 +1,6 @@
 /* Home page styling */
 .home-tab {
     text-align: center;
-    background: #FFEEC2;
     padding: 2rem;
     border-top: none;
 }
@@ -25,25 +24,46 @@
     flex-direction: column; /* icon on top, text below */
     align-items: center;
     cursor: pointer;
+    padding: 12px;
+    border-radius: 12px; /* rounded corners, optional */
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
-/* The actual icon */
+
+/* Button icons only */
 .button-icon {
-    width: 60px;
+    /* width: 60px; */
     height: 60px;
     object-fit: contain;
     margin-bottom: 8px;
-    transition: transform 0.2s ease, filter 0.2s ease;
+    cursor: pointer;
+    border-radius: 100px;
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+
+    /* Shadow stack - ground fixed at 15px */
+    box-shadow:
+        0 2px 0px #F68C02,
+        0 4px 0px #F68C02,
+        0 6px 0px #F68C02,
+        0 8px 0px #F68C02,
+        0 10px 0px #F68C02,
+        0 12px 0px #F68C02,
+        0 15px 0px #F68C02; /* <- ground */
 }
 
-.button-icon:hover {
-    transform: scale(1.1);
-    filter: brightness(1.2);
+/* Pressed state */
+.button-icon:active {
+    transform: translateY(6px); /* button lowers into the stack */
+    box-shadow:
+        0 2px 0px #F68C02,
+        0 3px 0px #F68C02,
+        0 4px 0px #F68C02,
+        0 5px 0px #F68C02,
+        0 6px 0px #F68C02,
+        0 7px 0px #F68C02,
+        0 9px 0px #F68C02; /* <- stays as ground */
+    transition: transform 0.14s ease-in, box-shadow 0.15s ease-in;
 }
 
-/* Text under icon (not clickable, just label) */
-.icon-button span {
-    margin-top: 4px;
-    font-size: 14px;
-    pointer-events: none;
-}
+
+

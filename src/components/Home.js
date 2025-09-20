@@ -3,7 +3,7 @@ import "../css/Home.css";
 
 function Home({ addTab }) {
     return (
-        <div className="text-center p-8 bg-yellow-50 min-h-[60vh] flex flex-col items-center justify-center">
+        <div className="text-center p-8 min-h-[60vh] flex flex-col items-center justify-center">
             <img
                 src="/Samine_Logo.png"
                 alt="My Art Space Logo"
@@ -19,7 +19,7 @@ function Home({ addTab }) {
                     onClick={() => addTab("About")}
                 >
                     <img
-                        src="/icons/app_icon_sample.png"
+                        src="/icons/About_Button.png"
                         alt="About"
                         className="button-icon"
                     />
@@ -32,7 +32,7 @@ function Home({ addTab }) {
                     onClick={() => addTab("Works")}
                 >
                     <img
-                        src="/icons/app_icon_sample.png"
+                        src="/icons/Work_Button.png"
                         alt="Works"
                         className="button-icon"
                     />
@@ -45,11 +45,24 @@ function Home({ addTab }) {
                     onClick={() => addTab("Connect")}
                 >
                     <img
-                        src="/icons/app_icon_sample.png"
+                        src="/icons/Connect_Button.png"
                         alt="Connect"
                         className="button-icon"
                     />
                     <span>Connect</span>
+                </div>
+
+                   {/* Connect */}
+                <div
+                    className="icon-button"
+                    // onClick={() => addTab("More Soon")}
+                >
+                    <img
+                        src="/icons/More_Soon.png"
+                        alt="More"
+                        className="button-icon"
+                    />
+                    <span>Soon...</span>
                 </div>
             </div>
         </div>

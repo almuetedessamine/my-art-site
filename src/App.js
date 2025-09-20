@@ -1,11 +1,11 @@
 import React from "react";
 import TabSystem from "./components/TabSystem";
-import Background from "./components/Background";
+// import Background from "./components/Background";
 
 function App() {
   return (
     <>
-      <Background />
+      {/* <Background /> */}
       <TabSystem />
     </>
   );
