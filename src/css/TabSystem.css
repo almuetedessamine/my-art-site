@@ -1,35 +1,45 @@
 /* Browser container */
 .browser {
     max-width: 900px;
-    margin: 1rem auto;              /* tighter on mobile */
-    padding: 0;                     /* no extra padding */
+    margin: 1rem auto;
+    /* tighter on mobile */
+    padding: 0;
+    /* no extra padding */
     display: flex;
     flex-direction: column;
-    border-radius: 12px;            /* consistent rounded corners */
-    overflow: hidden;               /* keep borders clean */
+    border-radius: 12px;
+    /* consistent rounded corners */
+    overflow: hidden;
+    /* keep borders clean */
 }
 
 /* Tab bar */
 .tab-bar {
     display: flex;
-    /* border-bottom: 4px solid #F68C02;  */
-    border-radius: 12px 12px 0 0;     /* rounded top corners */
-    margin-bottom: -1px;              /* remove gap with content */
-    flex-wrap: wrap;                  /* better mobile layout */
+    border-radius: 12px 12px 0 0;
+    /* rounded top corners */
+    margin-bottom: -1px;
+    /* remove gap with content */
+    flex-wrap: wrap;
+    /* better mobile layout */
 }
 
-/* Individual tabs */
+
 .tab {
-    display: flex;
     align-items: center;
-    border: 4px solid transparent;   /* give space for active border */
+    border: 4px solid transparent;
+    /* give space for active border */
     border-radius: 12px 12px 0 0;
     cursor: pointer;
     font-size: 0.95rem;
     position: relative;
     transition: background 0.2s ease, border 0.2s ease;
-    min-width: 90px;                 /* keep tabs from shrinking too much */
+    min-width: 94px;
+    /* keep tabs from shrinking too much */
     text-align: center;
+    flex: 0 0 auto;
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
 }
 
 .tab:hover {
@@ -37,8 +47,8 @@
 }
 
 .tab.active {
-    /* border-color: #F68C02; */
-    z-index: 1;
+    background: #fff;
+    border: 3px solid #F68C02; /* highlight border */
 }
 
 /* Close button */
@@ -55,25 +65,45 @@
     color: red;
 }
 
+.tab-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* pushes X to right */
+  width: 100%;
+}
+
+.tab-label {
+  flex-grow: 1;
+  text-align: center; /* keeps name centered even with the X */
+}
+
 /* Content area */
 .tab-content {
-    background: #FFEEC2;
-    border: 4px solid #F68C02;      /* thicker border */
-    border-radius: 0 12px 12px 12px;   /* rounded bottom */
-            /* connects content to tab */
-    padding: 0;                     /* padding removed */
+  position: relative;
+  background: #FFEEC2;
+  border: 4px solid #F68C02;
+  border-radius: 0 12px 12px 12px;
+  margin-top: -4px;
+  z-index: 2; /* content sits below tab-bar */
+  overflow: hidden; /* prevent animations from spilling out */
 }
 
-/* Default tabs (desktop) */
-.tab {
-  font-size: 0.95rem;
-  padding: 0.6rem 1.2rem;
-}
-
-/* On small screens, shrink */
+/* On small screens, tabs stretch evenly */
 @media (max-width: 640px) {
-  .tab {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.8rem;
-  }
+    .tab {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+        flex: 1 1 0;   /* grow and shrink equally */
+        min-width: unset; /* remove fixed min-width */
+        text-align: center;
+    }
+
+    .tab-bar {
+        width: 100%;   /* ensure bar fills full width */
+    }
+
+    .tab-content {
+        width: 100%;
+        border-radius: 0 0 12px 12px;   /* match the tab-bar */
+    }
 }

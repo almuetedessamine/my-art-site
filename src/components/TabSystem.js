@@ -4,6 +4,7 @@ import Works from "./Works";
 import Connect from "./Connect";
 import Home from "./Home";
 import "../css/TabSystem.css";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Tab components mapping
 const tabComponents = {
@@ -22,7 +23,7 @@ function TabSystem() {
     Home: "#F68B01",
     About: "#FFC730",
     Works: "#4CC0C0",
-    Connect: "#B5E3D9",
+    Connect: "#A5D8F9",
   };
 
   function addTab(name) {
@@ -63,29 +64,36 @@ function TabSystem() {
     <div className="browser">
       {/* Tab bar */}
       <div className="tab-bar">
-        {tabs.map((tab) => (
-          <div
-            key={tab.name}
-            className={`tab ${activeTab === tab.name ? "active" : ""}`}
-            style={{
-              backgroundColor: tabColors[tab.name] || "#ddd",
-            }}
-            onClick={() => setActiveTab(tab.name)}
-          >
-            {tab.name}
-            {tab.name !== "Home" && (
-              <button
-                className="close-btn"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  closeTab(tab.name);
-                }}
-              >
-                ✕
-              </button>
-            )}
-          </div>
-        ))}
+        <AnimatePresence initial={false}>
+          {tabs.map((tab) => (
+            <motion.div
+              key={tab.name}
+              className={`tab ${activeTab === tab.name ? "active" : ""}`}
+              style={{ backgroundColor: tabColors[tab.name] || "#ddd" }}
+              onClick={() => setActiveTab(tab.name)}
+              initial={{ y: 15, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 40, opacity: 1 }}
+              transition={{ duration: 0.30 }}
+              whileTap={{ y: 2 }}
+            >
+              <div className="tab-inner">
+                <span className="tab-label">{tab.name}</span>
+                {tab.name !== "Home" && (
+                  <button
+                    className="close-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      closeTab(tab.name);
+                    }}
+                  >
+                    ✕
+                  </button>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
 
       {/* Tab content */}

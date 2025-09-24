@@ -2,21 +2,34 @@ import React from "react";
 import "../css/Home.css";
 
 function Home({ addTab }) {
+
+    function handleButtonClick(name) {
+        // Optional: add a little "pressed" animation here via CSS class toggle
+        setTimeout(() => {
+            addTab(name);
+        }, 200); // 200ms delay
+    }
     return (
         <div className="text-center p-8 min-h-[60vh] flex flex-col items-center justify-center">
             <img
                 src="/Samine_Logo.png"
                 alt="My Art Space Logo"
-                className="w-36 md:w-30 lg:w-60" 
-                // className="w-60 h-auto mb-4 transition-transform duration-300 hover:rotate-6 hover:drop-shadow-lg"
+                className="w-36 md:w-30 lg:w-60"
             />
             <p>Welcome! This is my cozy little corner to showcase paintings & Connect.</p>
 
-            <div className="icon-buttons">
+            {/* Grid for icon buttons */}
+            <div
+                className="
+        grid 
+          grid-cols-2 gap-6 mt-6   /* phones: 2 per row */
+          md:flex md:gap-8 md:justify-center /* desktop: inline row */
+        "
+            >
                 {/* About */}
                 <div
                     className="icon-button"
-                    onClick={() => addTab("About")}
+                    onClick={() => handleButtonClick("About")}
                 >
                     <img
                         src="/icons/About_Button.png"
@@ -29,7 +42,7 @@ function Home({ addTab }) {
                 {/* Works */}
                 <div
                     className="icon-button"
-                    onClick={() => addTab("Works")}
+                    onClick={() => handleButtonClick("Works")}
                 >
                     <img
                         src="/icons/Work_Button.png"
@@ -41,8 +54,8 @@ function Home({ addTab }) {
 
                 {/* Connect */}
                 <div
-                    className="icon-button"
-                    onClick={() => addTab("Connect")}
+                    className="icon-button relative"
+                    onClick={() => handleButtonClick("Connect")}
                 >
                     <img
                         src="/icons/Connect_Button.png"
@@ -52,11 +65,13 @@ function Home({ addTab }) {
                     <span>Connect</span>
                 </div>
 
-                   {/* Connect */}
-                <div
-                    className="icon-button"
-                    // onClick={() => addTab("More Soon")}
-                >
+                {/* Soon... */}
+                <div className="icon-button relative">
+                    <img
+                        src="/icons/stars.png"
+                        alt="Overlay"
+                        className="button-overlay"
+                    />
                     <img
                         src="/icons/More_Soon.png"
                         alt="More"

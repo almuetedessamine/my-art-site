@@ -21,19 +21,21 @@
 /* Each icon button */
 .icon-button {
     display: flex;
-    flex-direction: column; /* icon on top, text below */
+    flex-direction: column;
+    /* icon on top, text below */
     align-items: center;
     cursor: pointer;
     padding: 12px;
-    border-radius: 12px; /* rounded corners, optional */
+    border-radius: 12px;
+    /* rounded corners, optional */
     transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
 
 /* Button icons only */
 .button-icon {
-    /* width: 60px; */
-    height: 60px;
+    width: 80x;
+    height: 80px;
     object-fit: contain;
     margin-bottom: 8px;
     cursor: pointer;
@@ -47,23 +49,48 @@
         0 6px 0px #F68C02,
         0 8px 0px #F68C02,
         0 10px 0px #F68C02,
-        0 12px 0px #F68C02,
-        0 15px 0px #F68C02; /* <- ground */
+        0 10px 0px #F68C02,
+        0 13px 0px #F68C02;
+    /* <- ground */
 }
 
 /* Pressed state */
 .button-icon:active {
-    transform: translateY(6px); /* button lowers into the stack */
+    transform: translateY(9px);
+    /* button lowers into the stack */
     box-shadow:
         0 2px 0px #F68C02,
         0 3px 0px #F68C02,
+        0 3px 0px #F68C02,
         0 4px 0px #F68C02,
-        0 5px 0px #F68C02,
-        0 6px 0px #F68C02,
-        0 7px 0px #F68C02,
-        0 9px 0px #F68C02; /* <- stays as ground */
+        0 4px 0px #F68C02,
+        0 5px 0px #F68C02;
+    /* <- stays as ground */
     transition: transform 0.14s ease-in, box-shadow 0.15s ease-in;
 }
 
+/* Overlay image just for decoration */
+.button-overlay {
+    position: absolute;
+    /* lets you move it freely */
+    top: -9px;
+    /* adjust as needed */
+    left: 6px;
+    width: 85%;
+    /* or custom size */
+    height: 85%;
+    object-fit: contain;
+    /* or cover, depending on your needs */
+    pointer-events: none;
+    /* ignores clicks */
+    z-index: 5;
+    /* sits above button graphic */
+}
 
-
+/* On small screens, tabs stretch evenly */
+@media (max-width: 640px) {
+    .button-icon {
+        width: 60px;
+        height: 60px;
+    }
+}

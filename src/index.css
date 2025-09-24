@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    font-family: sans-serif;
+    background-color: #fff7ed;
+    /* a light background so orange pops */
+    background-image:
+        linear-gradient(to right, #E9BA9E 1px, transparent 1px),
+        linear-gradient(to bottom, #E9BA9E 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* For desktop (screens 1024px and up) */
+@media (min-width: 1024px) {
+    body {
+        margin: 40px;
+        /* more margin on desktop */
+    }
+}
+
+/* For phones (screens 768px and below) */
+@media (max-width: 767px) {
+    body {
+        margin: 10px;
+        /* smaller margin for mobile */
+    }
+}
