@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/Home.css";
+import { playCuteSound } from "../utils/sound";
 
 function Home({ addTab }) {
 
@@ -29,7 +30,10 @@ function Home({ addTab }) {
                 {/* About */}
                 <div
                     className="icon-button"
-                    onClick={() => handleButtonClick("About")}
+                    onClick={() => {
+                        playCuteSound(500);
+                        handleButtonClick("About")
+                    }}
                 >
                     <img
                         src="/icons/About_Button.png"
@@ -42,7 +46,10 @@ function Home({ addTab }) {
                 {/* Works */}
                 <div
                     className="icon-button"
-                    onClick={() => handleButtonClick("Works")}
+                    onClick={() => {
+                        playCuteSound(600);
+                        handleButtonClick("Works")
+                    }}
                 >
                     <img
                         src="/icons/Work_Button.png"
@@ -55,7 +62,10 @@ function Home({ addTab }) {
                 {/* Connect */}
                 <div
                     className="icon-button relative"
-                    onClick={() => handleButtonClick("Connect")}
+                    onClick={() => {
+                        playCuteSound(700);
+                        handleButtonClick("Connect")
+                    }}
                 >
                     <img
                         src="/icons/Connect_Button.png"
@@ -66,7 +76,11 @@ function Home({ addTab }) {
                 </div>
 
                 {/* Soon... */}
-                <div className="icon-button relative">
+                <div className="icon-button relative"
+                    onClick={() => {
+                        playCuteSound(800);
+                    }}
+                >
                     <img
                         src="/icons/stars.png"
                         alt="Overlay"

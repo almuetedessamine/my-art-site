@@ -34,7 +34,7 @@
     font-size: 0.95rem;
     position: relative;
     transition: background 0.2s ease, border 0.2s ease;
-    min-width: 94px;
+    min-width: 150px;
     /* keep tabs from shrinking too much */
     text-align: center;
     flex: 0 0 auto;
@@ -48,7 +48,7 @@
 
 .tab.active {
     background: #fff;
-    border: 3px solid #F68C02; /* highlight border */
+    /* border: 5px solid #F68C02; */
 }
 
 /* Close button */

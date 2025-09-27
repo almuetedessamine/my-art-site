@@ -5,6 +5,7 @@ import Connect from "./Connect";
 import Home from "./Home";
 import "../css/TabSystem.css";
 import { motion, AnimatePresence } from "framer-motion";
+import { playMultoNote,playCuteSound,toggleMute, getMuteStatus } from "../utils/sound";
 
 // Tab components mapping
 const tabComponents = {
@@ -17,6 +18,12 @@ const tabComponents = {
 function TabSystem() {
   const [tabs, setTabs] = useState([{ name: "Home", component: <Home addTab={addTab} /> }]);
   const [activeTab, setActiveTab] = useState("Home");
+  const [isMuted, setIsMuted] = useState(getMuteStatus());
+
+  const handleToggleSound = () => {
+    const muted = toggleMute();
+    setIsMuted(muted);
+  };
 
   // Map tab names to colors
   const tabColors = {
@@ -62,6 +69,13 @@ function TabSystem() {
 
   return (
     <div className="browser">
+      {/* 🔇 Sound toggle button */}
+      <button
+        onClick={handleToggleSound}
+        className="absolute top-2 right-2 px-3 py-1 rounded-lg text-sm bg-orange-300 hover:bg-orange-400"
+      >
+        {isMuted ? "🔇 Mute" : "🔊 Sound"}
+      </button>
       {/* Tab bar */}
       <div className="tab-bar">
         <AnimatePresence initial={false}>
@@ -70,12 +84,15 @@ function TabSystem() {
               key={tab.name}
               className={`tab ${activeTab === tab.name ? "active" : ""}`}
               style={{ backgroundColor: tabColors[tab.name] || "#ddd" }}
-              onClick={() => setActiveTab(tab.name)}
+              onClick={() => {
+                playMultoNote();// different note for tab bar clicks 🎶
+                setActiveTab(tab.name);
+              }}
               initial={{ y: 15, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 40, opacity: 1 }}
               transition={{ duration: 0.30 }}
-              whileTap={{ y: 2 }}
+              whileTap={{ y: 10 }}
             >
               <div className="tab-inner">
                 <span className="tab-label">{tab.name}</span>
@@ -84,6 +101,7 @@ function TabSystem() {
                     className="close-btn"
                     onClick={(e) => {
                       e.stopPropagation();
+                      playCuteSound(300);
                       closeTab(tab.name);
                     }}
                   >
