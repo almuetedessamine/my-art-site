@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     font-family: sans-serif;
     background-color: #fff7ed;
@@ -10,6 +15,19 @@ body {
         linear-gradient(to right, #E9BA9E 1px, transparent 1px),
         linear-gradient(to bottom, #E9BA9E 1px, transparent 1px);
     background-size: 20px 20px;
+    /*removing the blue highlight*/
+    -webkit-user-select: none;
+    /* Safari/Chrome */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+ */
+    user-select: none;
+    /* Remove scrolling */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 /* For desktop (screens 1024px and up) */

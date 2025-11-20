@@ -1,22 +1,120 @@
 .about-tab {
-    padding: 1.5rem;
-    background-color: #fdfaf6;
-    /* soft warm background */
+  padding: 2rem;
+  background: #fff8f0;
+  border-radius: 12px;
+}
+
+.about-header {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.about-intro {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+.about-tab-frame {
+    border: 3px solid #F68C02; /* frame effect */
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    font-family: 'Georgia', serif;
-    /* cozy, bookish feel */
+    margin: 10px;
+    max-width: 1000px;
+    background: #fff; /* optional */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-.about-tab h2 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    color: #4a3f35;
-    /* warm brown for headers */
+.about-header-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
-.about-tab p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #5c5346;
+.about-profile-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* 12-column flexible grid */
+  gap: 1rem;
+}
+
+/* General Box Style */
+.about-box {
+  border: 2px solid #F68C02;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* Custom Widths (based on grid-column span) */
+.education-box {
+  grid-column: span 8; /* Larger box */
+}
+
+.tools-box {
+  grid-column: span 4; /* Smaller box */
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 per row */
+  gap: 1rem;
+  justify-items: center; /* center each icon */
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.tools-grid img {
+  width: 60px;   /* adjust size to your liking */
+  height: auto;
+  transition: transform 0.2s ease-in-out;
+}
+
+.tools-grid img:hover {
+  transform: scale(1.1); /* hover zoom effect */
+}
+
+.experience-box {
+  grid-column: span 12;
+}
+
+.language-box {
+  grid-column: span 6;
+}
+
+.interest-box {
+  grid-column: span 6;
+}
+
+.banner-box {
+  grid-column: span 12;
+  text-align: center;
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr; /* only 1 column on small screens */
+  }
+
+  /* Make each box take full width */
+  .education-box,
+  .tools-box,
+  .experience-box,
+  .language-box,
+  .interest-box,
+  .banner-box {
+    grid-column: span 1; /* full width in 1-col grid */
+  }
+
+  /* Resize tools for smaller screen */
+  .tools-grid img {
+    width: 45px; /* smaller icons for phone */
+  }
 }

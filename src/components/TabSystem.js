@@ -5,7 +5,7 @@ import Connect from "./Connect";
 import Home from "./Home";
 import "../css/TabSystem.css";
 import { motion, AnimatePresence } from "framer-motion";
-import { playMultoNote,playCuteSound,toggleMute, getMuteStatus } from "../utils/sound";
+import { playMultoNote, playCuteSound, toggleMute, getMuteStatus } from "../utils/sound";
 
 // Tab components mapping
 const tabComponents = {
@@ -31,6 +31,20 @@ function TabSystem() {
     About: "#FFC730",
     Works: "#4CC0C0",
     Connect: "#A5D8F9",
+  };
+  // Map tab names to content background colors
+  const tabBackgrounds = {
+    Home: "#FFEEC2",   // special background just for Home
+    About: "#FFC730",
+    Works: "#E6FAFA",
+    Connect: "#E9F6FF",
+  };
+  // Map tab names to border colors
+  const tabBorders = {
+    Home: "#f67701ff",    // orange
+    About: "#F68B01",   // yellow
+    Works: "#218e8eff",   // teal
+    Connect: "#2aa2f3ff", // light blue
   };
 
   function addTab(name) {
@@ -77,18 +91,22 @@ function TabSystem() {
         {isMuted ? "🔇 Mute" : "🔊 Sound"}
       </button>
       {/* Tab bar */}
-      <div className="tab-bar">
+      <div className="tab-bar"
+      >
         <AnimatePresence initial={false}>
           {tabs.map((tab) => (
             <motion.div
               key={tab.name}
               className={`tab ${activeTab === tab.name ? "active" : ""}`}
-              style={{ backgroundColor: tabColors[tab.name] || "#ddd" }}
+              style={{
+                backgroundColor: tabColors[tab.name] || "#ddd",
+                borderColor: tabBorders[tab.name] || "transparent",
+              }}
               onClick={() => {
                 playMultoNote();// different note for tab bar clicks 🎶
                 setActiveTab(tab.name);
               }}
-              initial={{ y: 15, opacity: 0 }}
+              initial={{ y: 40, opacity: 1 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 40, opacity: 1 }}
               transition={{ duration: 0.30 }}
@@ -115,9 +133,16 @@ function TabSystem() {
       </div>
 
       {/* Tab content */}
-      <div className="tab-content">
+      <div
+        className="tab-content"
+        style={{
+          backgroundColor: tabBackgrounds[activeTab] || "#fff",
+          borderColor: tabBorders[activeTab] || "#ccc",
+        }}
+      >
         {tabs.find((tab) => tab.name === activeTab)?.component}
       </div>
+
     </div>
   );
 }
