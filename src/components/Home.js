@@ -13,10 +13,11 @@ function Home({ addTab }) {
     return (
         <div className="text-center p-8 min-h-[60vh] flex flex-col items-center justify-center">
             <img
-                src="/Samine_Logo.png"
+                src="/icons/Logo_Title.png"
                 alt="My Art Space Logo"
-                className="w-36 md:w-30 lg:w-60"
+                className="logo-title"
             />
+
             <p>Welcome! This is my cozy little corner to showcase paintings & Connect.</p>
 
             {/* Grid for icon buttons */}

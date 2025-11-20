@@ -1,5 +1,7 @@
 .about-tab {
-  padding: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 2rem;
   background: #fff8f0;
   border-radius: 12px;
 }
@@ -15,33 +17,85 @@
   margin-bottom: 2rem;
   font-size: 1.1rem;
 }
+
 .about-tab-frame {
-    border: 3px solid #F68C02; /* frame effect */
-    border-radius: 12px;
-    margin: 10px;
-    max-width: 1000px;
-    background: #fff; /* optional */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  position: relative;
+  border: 3px solid #F68C02;
+  /* frame effect */
+  border-radius: 12px;
+  margin: 10px;
+  max-width: 1000px;
+  background: #fff;
+  /* optional */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.about-welcome-img {
+  position: absolute;
+  /* now you can move it anywhere */
+  top: -9px;
+  /* adjust vertical position */
+  left: 50%;
+  /* adjust horizontal position */
+  transform: translateX(-50%);
+  width: 190px;
+  /* adjust size */
+  height: auto;
+  z-index: 5;
+  /* sit above other content */
+  pointer-events: none;
+  /* ignores clicks */
 }
 
 .about-header-container {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.about-profile-img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr); /* 12-column flexible grid */
+  grid-template-columns: repeat(12, 1fr);
+  /* 12-column flexible grid */
   gap: 1rem;
+}
+
+/* Desktop second row */
+.second-row-grid {
+      margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  /* Experience 7, Right column 5 */
+  gap: 1rem;
+}
+
+/* Right column wrapper */
+.about-right-column {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  /* stack language + interest vertically */
+  gap: 1rem;
+}
+
+.experience-date {
+  width: 130px;
+  /* adjust size */
+  height: auto;
+  display: block;
+  /* ensures it goes under the text */
+  margin-top: 4px;
+  /* space between text and image */
+}
+
+.Graduation-date {
+  width: 120px;
+  /* adjust size */
+  height: auto;
+  display: block;
+  /* ensures it goes under the text */
+  margin-top: 4px;
+  /* space between text and image */
 }
 
 /* General Box Style */
@@ -50,71 +104,167 @@
   padding: 1rem;
   border-radius: 8px;
   background: #fff;
+  box-shadow: 0px 5px 0px #F68C02;
 }
 
-/* Custom Widths (based on grid-column span) */
-.education-box {
-  grid-column: span 8; /* Larger box */
-}
 
 .tools-box {
-  grid-column: span 4; /* Smaller box */
+  grid-column: span 4;
+  /* Smaller box */
 }
 
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 per row */
+  grid-template-columns: repeat(3, 1fr);
+  /* 3 per row */
   gap: 1rem;
-  justify-items: center; /* center each icon */
+  justify-items: center;
+  /* center each icon */
   align-items: center;
   margin-top: 0.5rem;
 }
 
+.tool-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tool-tip {
+  position: absolute;
+  bottom: -35px;
+  background: #F68C02;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 1;
+}
+
+.tool-item:hover .tool-tip {
+  opacity: 1;
+}
+
 .tools-grid img {
-  width: 60px;   /* adjust size to your liking */
+  width: 60px;
+  /* adjust size to your liking */
   height: auto;
   transition: transform 0.2s ease-in-out;
 }
 
 .tools-grid img:hover {
-  transform: scale(1.1); /* hover zoom effect */
+  transform: scale(1.1);
+  /* hover zoom effect */
 }
 
-.experience-box {
-  grid-column: span 12;
-}
-
-.language-box {
-  grid-column: span 6;
-}
-
-.interest-box {
-  grid-column: span 6;
+/* Custom Widths (based on grid-column span) */
+.education-box {
+  grid-column: span 8;
+  /* Larger box */
 }
 
 .banner-box {
   grid-column: span 12;
-  text-align: center;
+  padding: 0;
+  /* removes inside spacing */
+  margin-top: -0.5rem;
+  /* optional spacing above */
+  margin-left: -1rem;
+  /* counter the .about-tab padding */
+  margin-right: -1rem;
+  /* counter the .about-tab padding */
+  border-radius: 0;
+  /* clean straight edges */
+  overflow: hidden;
+  /* ensures clean cropped corners */
 }
 
-/* Mobile-first responsive design */
+/* Profile image responsive adjustment */
+.about-profile-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 8px;
+}
+
+/* Banner image style */
+.about-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 350px;
+  /* you can resize this freely */
+}
+
+/* Responsive for mobile */
 @media (max-width: 768px) {
-  .about-grid {
-    grid-template-columns: 1fr; /* only 1 column on small screens */
+  .about-welcome-img {
+    width: 170px;
   }
 
-  /* Make each box take full width */
+  .about-profile-img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .about-tab {
+    padding: 1rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    /* only 1 column on small screens */
+  }
+
+  /* Right column (Languages + Interests) also full width */
+  .second-row-grid {
+    margin-top: 1rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .about-right-column {
+    display: block;
+    /* switch to block so children stack naturally */
+  }
+
   .education-box,
   .tools-box,
-  .experience-box,
   .language-box,
   .interest-box,
   .banner-box {
-    grid-column: span 1; /* full width in 1-col grid */
+    grid-column: span 1;
+  }
+
+  .interest-box {
+    margin-top: 1rem;
   }
 
   /* Resize tools for smaller screen */
+  .tools-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
   .tools-grid img {
-    width: 45px; /* smaller icons for phone */
+    width: 50px;
+    /* smaller icons for phone */
+  }
+
+
+  .banner-box {
+        margin-top: 0.5rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+    margin-bottom: -1rem;
+  }
+
+  .about-banner-img {
+    max-height: 200px;
+    /* smaller banner for phones */
   }
 }
